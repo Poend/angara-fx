@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+bg_color = Color(0.13, 0.15, 0.18, 1)
+border_width_left = 1
+border_width_top = 3
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.44, 0.19, 1)
+content_margin_left = 5.0
+content_margin_top = 4.0
+content_margin_right = 5.0
+content_margin_bottom = 6.0
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="StyleBoxFlat" id="Header"]
+bg_color = Color(0.29, 0.20, 0.095, 1)
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+
+[node name="EmitterCard" type="PanelContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Header" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="Enabled" type="CheckBox" parent="Content/Header"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Title" type="Button" parent="Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Emitter"
+alignment = 0
+clip_text = true
+theme_override_styles/normal = SubResource("Header")
+
+[node name="Properties" type="Button" parent="Content"]
+layout_mode = 2
+text = "Properties · CPU"
+alignment = 0
+clip_text = true
+flat = true
+
+[node name="Summary" type="Button" parent="Content"]
+layout_mode = 2
+text = "Emitter Summary"
+alignment = 0
+clip_text = true
+flat = true
+
+[node name="Stages" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Renderers" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="AddRenderer" type="Button" parent="Content"]
+layout_mode = 2
+text = "+ Sprite Renderer"
+alignment = 0
+flat = true
+
+[node name="AddMeshRenderer" type="Button" parent="Content"]
+layout_mode = 2
+text = "+ Mesh Renderer"
+alignment = 0
+flat = true

@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[node name="DetailsFoldout" type="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Toggle" type="CheckButton" parent="."]
+layout_mode = 2
+text = "Advanced source fields"
+
+[node name="Body" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Explanation" type="Label" parent="Body"]
+layout_mode = 2
+text = "Imported settings are preserved here. Mesh and material resources are edited above."
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 11

@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[node name="InputRow" type="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="InputName" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.77, 0.81, 1)
+theme_override_font_sizes/font_size = 12
+text = "Parameter"
+autowrap_mode = 3
+
+[node name="Number" type="SpinBox" parent="."]
+visible = false
+layout_mode = 2
+min_value = -1000000000.0
+max_value = 1000000000.0
+step = 0.001
+allow_greater = true
+allow_lesser = true
+update_on_text_changed = false
+
+[node name="String" type="LineEdit" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Boolean" type="CheckBox" parent="."]
+visible = false
+layout_mode = 2
+text = "Enabled"
+
+[node name="Summary" type="Label" parent="."]
+visible = false
+layout_mode = 2
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.66, 0.69, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Children" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 7

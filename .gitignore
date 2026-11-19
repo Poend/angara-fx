@@ -1,0 +1,5 @@
+.godot/
+build/
+addons/niagara_bridge/native/bin/
+__pycache__/
+*.pyc

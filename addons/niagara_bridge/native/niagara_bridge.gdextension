@@ -1,0 +1,8 @@
+[configuration]
+entry_symbol = "niagara_bridge_native_init"
+compatibility_minimum = "4.7"
+reloadable = true
+
+[libraries]
+windows.debug.x86_64 = "res://addons/niagara_bridge/native/bin/niagara_bridge_native.dll"
+windows.release.x86_64 = "res://addons/niagara_bridge/native/bin/niagara_bridge_native.dll"

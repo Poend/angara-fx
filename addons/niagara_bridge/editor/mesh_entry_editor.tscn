@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/niagara_bridge/editor/mesh_entry_editor.gd" id="1"]
+[ext_resource type="PackedScene" path="res://addons/niagara_bridge/editor/vector3_editor.tscn" id="2"]
+
+[node name="MeshEntryEditor" type="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+script = ExtResource("1")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mesh 0"
+
+[node name="Remove" type="Button" parent="Header"]
+layout_mode = 2
+text = "Remove"
+
+[node name="Resource" type="Label" parent="."]
+layout_mode = 2
+text = "none"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 12
+
+[node name="Actions" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Choose" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Choose Mesh .tres"
+
+[node name="Clear" type="Button" parent="Actions"]
+layout_mode = 2
+text = "Clear"
+
+[node name="Expand" type="CheckButton" parent="."]
+layout_mode = 2
+text = "Transform / binding"
+
+[node name="Fields" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BindingLabel" type="Label" parent="Fields"]
+layout_mode = 2
+text = "User mesh binding"
+
+[node name="Binding" type="LineEdit" parent="Fields"]
+layout_mode = 2
+placeholder_text = "User.Mesh (optional)"
+
+[node name="RotationLabel" type="Label" parent="Fields"]
+layout_mode = 2
+text = "Rotation · degrees (YXZ)"
+
+[node name="Rotation" parent="Fields" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="ScaleLabel" type="Label" parent="Fields"]
+layout_mode = 2
+text = "Scale"
+
+[node name="Scale" parent="Fields" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="PivotLabel" type="Label" parent="Fields"]
+layout_mode = 2
+text = "Pivot offset · metres"
+
+[node name="Pivot" parent="Fields" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="SpaceLabel" type="Label" parent="Fields"]
+layout_mode = 2
+text = "Pivot space"
+
+[node name="Space" type="OptionButton" parent="Fields"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Mesh"
+popup/item_0/id = 0
+popup/item_1/text = "Simulation"
+popup/item_1/id = 1
+popup/item_2/text = "World"
+popup/item_2/id = 2
+popup/item_3/text = "Local"
+popup/item_3/id = 3
+
+[node name="LODLabel" type="Label" parent="Fields"]
+layout_mode = 2
+text = "LOD index"
+
+[node name="LOD" type="SpinBox" parent="Fields"]
+layout_mode = 2
+min_value = 0.0
+max_value = 32.0
+step = 1.0
+allow_greater = true
+
+[node name="Source" type="Label" parent="Fields"]
+layout_mode = 2
+text = "Source: none"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 11
+
+
+[node name="Hint" type="Label" parent="Fields"]
+layout_mode = 2
+text = "Apply commits these fields as one undoable edit. Runtime diagnostics report unsupported configurations."
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 11
+
+[node name="Error" type="Label" parent="Fields"]
+visible = false
+layout_mode = 2
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.5, 0.4, 1)
+
+[node name="Apply" type="Button" parent="Fields"]
+layout_mode = 2
+text = "Apply entry settings"

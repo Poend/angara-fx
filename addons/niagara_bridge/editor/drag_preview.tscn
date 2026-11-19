@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[node name="DragPreview" type="PanelContainer"]
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Module"
+mouse_filter = 2

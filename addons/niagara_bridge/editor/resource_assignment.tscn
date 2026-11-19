@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[node name="ResourceAssignment" type="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+text = "Material"
+autowrap_mode = 3
+
+[node name="Resource" type="Label" parent="."]
+layout_mode = 2
+text = "none"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 12
+
+[node name="Actions" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Choose" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Choose .tres"
+
+[node name="Clear" type="Button" parent="Actions"]
+layout_mode = 2
+text = "Clear"
+
+[node name="ParameterLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+text = "User material binding"
+
+[node name="Parameter" type="LineEdit" parent="."]
+visible = false
+layout_mode = 2
+placeholder_text = "User.Material (optional)"
+
+[node name="ApplyBinding" type="Button" parent="."]
+visible = false
+layout_mode = 2
+text = "Apply binding"

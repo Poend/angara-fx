@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/niagara_bridge/editor/stack_drop_button.gd" id="1"]
+
+[node name="StageHeader" type="HBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STAGE"
+alignment = 0
+clip_text = true
+flat = true
+theme_override_colors/font_color = Color(0.84, 0.67, 0.40, 1)
+theme_override_font_sizes/font_size = 11
+script = ExtResource("1")
+
+[node name="Paste" type="Button" parent="."]
+layout_mode = 2
+text = "Paste"
+
+[node name="Add" type="Button" parent="."]
+layout_mode = 2
+text = "+"

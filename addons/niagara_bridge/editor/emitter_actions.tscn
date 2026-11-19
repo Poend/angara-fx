@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[node name="EmitterActions" type="HBoxContainer"]
+layout_mode = 2
+
+[node name="Duplicate" type="Button" parent="."]
+layout_mode = 2
+text = "Duplicate emitter"
+
+[node name="Rename" type="Button" parent="."]
+layout_mode = 2
+text = "Rename"
+
+[node name="Remove" type="Button" parent="."]
+layout_mode = 2
+text = "Remove"
