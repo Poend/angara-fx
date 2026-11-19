@@ -4,6 +4,8 @@ Angara FX is a modular 3D particle editor and C++ runtime for Godot. Build an ef
 
 Artists who have used Niagara will recognize the spawn and update stages. Angara FX runs entirely inside Godot. Unreal Engine integration belongs to a separate importer.
 
+[Development roadmap](ROADMAP.md) · [Changelog](CHANGELOG.md) · [Versioning and compatibility](RELEASING.md)
+
 ## Watch the effects in Godot
 
 https://github.com/user-attachments/assets/4f0354b6-e701-44e5-a3ae-27680a9b51ea
