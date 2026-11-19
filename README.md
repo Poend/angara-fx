@@ -4,7 +4,19 @@ Angara FX is a modular 3D particle editor and C++ runtime for Godot. Build an ef
 
 Artists who have used Niagara will recognize the spawn and update stages. Angara FX runs entirely inside Godot. Unreal Engine integration belongs to a separate importer.
 
-![The Angara FX editor showing the Embers preview, its emitter stack, and the emission rate control](.github/images/embers-editor.png)
+## Watch the effects in Godot
+
+<video controls playsinline preload="metadata" width="960" poster="https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/angara-fx-showcase.jpg" src="https://github.com/user-attachments/assets/4f0354b6-e701-44e5-a3ae-27680a9b51ea"></video>
+
+Three five-second shots recorded in Godot 4.7.2. The camera orbits each effect while its particles are simulated. [Download the complete reel (720p MP4)](https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/angara-fx-showcase.mp4)
+
+| In the reel | Individual clip | What to look for |
+| --- | --- | --- |
+| 0:00 | [Weapon Aura](https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/weapon-aura.mp4) | Blue light and sparks follow the length of the blade. Imported from [Melee Weapon Aura VFX](https://www.fab.com/listings/a326acec-4180-4bb8-a383-4d83d3bc42dd). |
+| 0:05 | [Pixie Trail](https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/pixie-trail.mp4) | A moving emitter leaves a trail around a cluster of crystals. Imported from [RPG – Crafting & Environment VFX](https://www.fab.com/listings/a5077033-9401-4b9b-9b31-031d81140604). |
+| 0:10 | [Embers](https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/embers.mp4) | Sparks rise from a brazier and drift in a curl field. The effect is included in [examples/embers](examples/embers). |
+
+The third-party effects appear here as rendered footage. The source assets remain with their respective creators.
 
 ## Try Embers
 
@@ -14,6 +26,8 @@ Tested with Godot 4.7.2 (standard single-precision build), Windows x86-64, Forwa
 2. Open [project.godot](project.godot) in Godot and press **F5**. A plume of orange embers rises and curls.
 3. Stop the game, select **Angara FX** in the editor, and use **Open .tres** to open [embers.tres](examples/embers/embers.tres). Press **Play** in the preview timeline.
 4. Under **Parameters / System Settings**, lower `User.EmissionRate` from `110` to `36` particles per second. Watch the plume thin as the older sparks expire. Use **Save as** to keep your variation alongside the example.
+
+![The Angara FX editor showing the Embers preview, its emitter stack, and the emission rate control](.github/images/embers-editor.png)
 
 ## How an effect works
 
