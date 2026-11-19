@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
-project(angara_fx VERSION 0.1.0 LANGUAGES CXX)
+include("${CMAKE_CURRENT_LIST_DIR}/version.cmake")
+project(angara_fx VERSION "${ANGARA_FX_VERSION}" LANGUAGES CXX)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${ANGARA_FX_MANIFEST}")
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
   message(FATAL_ERROR "Use an out-of-source build directory.")
 endif()
