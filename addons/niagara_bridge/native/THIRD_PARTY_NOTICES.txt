@@ -1,4 +1,4 @@
-This extension links the official godot-cpp bindings (10.0.0-stable, commit507ed9d840c01a3c5b2a39af8bb4000bfac30bf5).
+This extension links the official godot-cpp bindings (10.0.0-stable, commit 507ed9d840c01a3c5b2a39af8bb4000bfac30bf5).
 
 # MIT License
 

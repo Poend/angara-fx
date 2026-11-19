@@ -414,17 +414,17 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Niagara Log" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit"]
+[node name="Angara FX Log" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LogTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit/Niagara Log"]
+[node name="LogTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit/Angara FX Log"]
 layout_mode = 2
 text = "Effect diagnostics"
 autowrap_mode = 3
 theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
 
-[node name="Diagnostics" type="RichTextLabel" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit/Niagara Log"]
+[node name="Diagnostics" type="RichTextLabel" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit/Angara FX Log"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

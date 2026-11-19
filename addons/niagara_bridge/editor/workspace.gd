@@ -229,7 +229,7 @@ func _open_file(path: String) -> void:
 	if ResourceLoader.exists(path):
 		resource = NBNativeWorkspaceDocument.load_effect(path, Effect)
 	if resource == null:
-		%Status.text = "Open failed: choose a Angara FX effect .tres."
+		%Status.text = "Open failed: choose an Angara FX effect .tres."
 		return
 	_load_document(resource, path)
 

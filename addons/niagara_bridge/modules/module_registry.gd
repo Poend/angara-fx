@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-## Editor catalog for the current CPU prototype. Support still depends on modes/inputs.
+## Authoring catalog. The compiler checks the selected execution backend and module inputs.
 const Module = preload("res://addons/niagara_bridge/document/nb_module.gd")
 const InputResource = preload("res://addons/niagara_bridge/document/nb_input.gd")
 ## Pins evaluated from the instance context. Compile-time switches and enum inputs

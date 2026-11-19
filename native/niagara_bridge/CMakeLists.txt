@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(GODOTCPP_API_VERSION "4.7" CACHE STRING "Godot API")
 set(GODOTCPP_TARGET "template_debug" CACHE STRING "Godot target")
-set(GODOTCPP_BUILD_PROFILE "${CMAKE_CURRENT_SOURCE_DIR}/build_profile.json" CACHE FILEPATH "Bindings used by this prototype")
+set(GODOTCPP_BUILD_PROFILE "${CMAKE_CURRENT_SOURCE_DIR}/build_profile.json" CACHE FILEPATH "Godot classes used by the runtime and editor")
 include(FetchContent)
 # godot-cpp 10.0.0-stable, Godot 4.7 single-precision API.
 FetchContent_Declare(godot_cpp
