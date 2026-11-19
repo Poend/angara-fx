@@ -6,7 +6,7 @@ Artists who have used Niagara will recognize the spawn and update stages. Angara
 
 ## Watch the effects in Godot
 
-<video controls playsinline preload="metadata" width="960" poster="https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/angara-fx-showcase.jpg" src="https://github.com/user-attachments/assets/4f0354b6-e701-44e5-a3ae-27680a9b51ea"></video>
+https://github.com/user-attachments/assets/4f0354b6-e701-44e5-a3ae-27680a9b51ea
 
 Three five-second shots recorded in Godot 4.7.2. The camera orbits each effect while its particles are simulated. [Download the complete reel (720p MP4)](https://github.com/Poend/angara-fx/raw/7db2da7561e66398457866a0a053cb9010f22853/.github/media/angara-fx-showcase.mp4)
 
