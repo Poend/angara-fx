@@ -14,4 +14,3 @@ const INTERNAL = 1
 const OWNER = 2
 const COMPLETION = 3
 const FIELDS = {"Age": "float", "LoopedAge": "float", "NormalizedLoopAge": "float", "LoopCount": "int", "CurrentLoopDelay": "float", "CurrentLoopDuration": "float", "ExecutionState": "int", "ExecutionStateSource": "int"}
-

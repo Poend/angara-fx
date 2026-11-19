@@ -29,4 +29,3 @@ void nb_torus_orient(vec3 axis,float turns,inout vec3 position,inout vec3 tangen
  position=nb_torus_rotate(position,rotation);tangent=nb_torus_rotate(tangent,rotation);normal=nb_torus_rotate(normal,rotation);
 }
 """
-

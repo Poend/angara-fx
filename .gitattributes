@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Godot writes an empty line after the last importer section.
+*.import whitespace=-blank-at-eof

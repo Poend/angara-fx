@@ -7,4 +7,3 @@ vec3 nb_sample_vector_field(sampler3D field_texture, vec3 position, vec3 bounds_
     return textureLod(field_texture, (position - bounds_min) / (bounds_max - bounds_min), 0.0).xyz;
 }
 """
-

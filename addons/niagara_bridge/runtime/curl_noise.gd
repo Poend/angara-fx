@@ -9,4 +9,3 @@ const FIELDS: Array = [
 	preload("res://addons/niagara_bridge/data/vector_fields/TilingCurl32.tres"),
 	preload("res://addons/niagara_bridge/data/vector_fields/TilingCurl64.tres"),
 ]
-

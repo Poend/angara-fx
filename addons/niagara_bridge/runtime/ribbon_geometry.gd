@@ -4,4 +4,3 @@ extends NBNativeRibbonGeometry
 ## Source references and remaining view/culling limitations are in runtime/README.md.
 const Values = preload("res://addons/niagara_bridge/runtime/value_evaluator.gd")
 const MIN_SEGMENT_CM: float = 1.0
-

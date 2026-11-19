@@ -65,4 +65,3 @@ static func _curve_identifier(name: String) -> String:
 
 static func _compiled_curve(contract: Dictionary,owner: String,emitter_name: String,errors: Array) -> Dictionary:
 	return NBNativeSourceProgram.invoke("_compiled_curve",[contract,owner,emitter_name,errors])
-

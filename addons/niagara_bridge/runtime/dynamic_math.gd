@@ -8,4 +8,3 @@ const SPECS: Dictionary = {
 	"Multiply_Vector2D_ByFloat": {"type": "vec2", "inputs": {"Vector2D": ["vec2", [1.0, 1.0]], "Float": ["float", 1.0]}},
 	"InvertBool": {"type": "bool", "inputs": {"Boolean": ["bool", false]}},
 }
-

@@ -5,4 +5,3 @@ extends NBNativeVMEvents
 
 static func handlers(plan: Dictionary) -> Array:
 	return NBNativeEffectController.handlers(plan)
-

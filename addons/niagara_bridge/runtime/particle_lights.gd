@@ -9,4 +9,3 @@ const BINDINGS={
 	"enabled":["LightRenderingEnabledBinding","bool"],"visibility":["RendererVisibilityTagBinding","int"],
 	"exponent":["LightExponentBinding","float"],"specular":["SpecularScaleBinding","float"],
 	"diffuse":["DiffuseScaleBinding","float"]}
-

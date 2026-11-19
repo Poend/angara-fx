@@ -162,4 +162,3 @@ static func _mesh_scale_default(emitter: Resource) -> Vector3:
 
 static func _issue(result: Dictionary, emitter: Resource, operation: Resource, severity: String, message: String) -> void:
 	_native_call("_issue",[result,emitter,operation,severity,message])
-
