@@ -1,0 +1,538 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://addons/niagara_bridge/editor/workspace.gd" id="1"]
+[ext_resource type="Shader" path="res://addons/niagara_bridge/editor/preview_grid.gdshader" id="2"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/editor/overview_view.gd" id="3"]
+[ext_resource type="PackedScene" path="res://addons/niagara_bridge/editor/timeline_panel.tscn" id="4"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/runtime/refraction_pass.gd" id="6_refraction"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/runtime/native_surface_pass.gd" id="7_native"]
+
+[sub_resource type="NBNativeRasterPass" id="NativeSurfacePass"]
+resource_local_to_scene = true
+script = ExtResource("7_native")
+
+[sub_resource type="NBNativeRasterPass" id="RefractionPass"]
+resource_local_to_scene = true
+script = ExtResource("6_refraction")
+use_imported_policy = true
+
+[sub_resource type="Compositor" id="Compositor"]
+resource_local_to_scene = true
+compositor_effects = Array[CompositorEffect]([SubResource("NativeSurfacePass"), SubResource("RefractionPass")])
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 1
+background_color = Color(0.045, 0.052, 0.065, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.7, 0.77, 0.9, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="GridMaterial"]
+shader = ExtResource("2")
+
+[sub_resource type="PlaneMesh" id="Ground"]
+material = SubResource("GridMaterial")
+size = Vector2(20, 20)
+
+[sub_resource type="StyleBoxFlat" id="Background"]
+bg_color = Color(0.07, 0.08, 0.10, 1)
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.10, 0.115, 0.14, 1)
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 13
+Label/colors/font_color = Color(0.83, 0.85, 0.89, 1)
+Button/font_sizes/font_size = 12
+
+[node name="NiagaraWorkspace" type="PanelContainer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme")
+theme_override_styles/panel = SubResource("Background")
+script = ExtResource("1")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Toolbar" type="HFlowContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 4
+
+[node name="Brand" type="Label" parent="Layout/Toolbar"]
+layout_mode = 2
+text = "ANGARA FX"
+theme_override_colors/font_color = Color(0.83, 0.66, 0.35, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="NewEffect" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New"
+
+[node name="OpenEffect" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Open .tres"
+
+[node name="SaveEffect" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save"
+
+[node name="SaveAsEffect" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save as"
+
+[node name="SavePlayerScene" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Create player scene…"
+
+[node name="ToolbarGap" type="Control" parent="Layout/Toolbar"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UndoEdit" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Undo"
+
+[node name="RedoEdit" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Redo"
+
+[node name="DocumentTitle" type="Label" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No effect open"
+custom_minimum_size = Vector2(160, 0)
+clip_text = true
+text_overrun_behavior = 3
+theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
+
+[node name="FocusWorkspace" type="Button" parent="Layout/Toolbar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Focus workspace"
+
+[node name="MainSplit" type="VBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Columns" type="HSplitContainer" parent="Layout/MainSplit"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 300
+
+[node name="Left" type="VBoxContainer" parent="Layout/MainSplit/Columns"]
+layout_mode = 2
+custom_minimum_size = Vector2(230, 0)
+
+[node name="PreviewTitle" type="HBoxContainer" parent="Layout/MainSplit/Columns/Left"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/MainSplit/Columns/Left/PreviewTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PREVIEW"
+theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
+
+[node name="FrameEffect" type="Button" parent="Layout/MainSplit/Columns/Left/PreviewTitle"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Frame effect"
+
+[node name="PreviewContainer" type="SubViewportContainer" parent="Layout/MainSplit/Columns/Left"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 180)
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+mouse_filter = 1
+
+[node name="PreviewViewport" type="SubViewport" parent="Layout/MainSplit/Columns/Left/PreviewContainer"]
+unique_name_in_owner = true
+own_world_3d = true
+size = Vector2i(400, 350)
+render_target_update_mode = 4
+
+[node name="World" type="Node3D" parent="Layout/MainSplit/Columns/Left/PreviewContainer/PreviewViewport"]
+unique_name_in_owner = true
+
+[node name="Environment" type="WorldEnvironment" parent="Layout/MainSplit/Columns/Left/PreviewContainer/PreviewViewport/World"]
+environment = SubResource("Environment")
+
+[node name="KeyLight" type="DirectionalLight3D" parent="Layout/MainSplit/Columns/Left/PreviewContainer/PreviewViewport/World"]
+rotation = Vector3(-0.8, -0.5, 0)
+light_color = Color(1, 0.92, 0.82, 1)
+light_energy = 2.0
+
+[node name="Ground" type="MeshInstance3D" parent="Layout/MainSplit/Columns/Left/PreviewContainer/PreviewViewport/World"]
+position = Vector3(0, -1, 0)
+mesh = SubResource("Ground")
+
+[node name="PreviewCamera" type="Camera3D" parent="Layout/MainSplit/Columns/Left/PreviewContainer/PreviewViewport/World"]
+unique_name_in_owner = true
+compositor = SubResource("Compositor")
+position = Vector3(1.2, 0.8, 1.2)
+rotation = Vector3(-0.28, 0.55, 0)
+current = true
+fov = 45.0
+
+[node name="PreviewStatus" type="Label" parent="Layout/MainSplit/Columns/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No effect loaded"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 11
+
+[node name="ParametersTitle" type="Label" parent="Layout/MainSplit/Columns/Left"]
+layout_mode = 2
+text = "PARAMETERS / SYSTEM SETTINGS"
+theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
+
+[node name="ParametersScroll" type="ScrollContainer" parent="Layout/MainSplit/Columns/Left"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 90)
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Parameters" type="VBoxContainer" parent="Layout/MainSplit/Columns/Left/ParametersScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WorkSplit" type="HSplitContainer" parent="Layout/MainSplit/Columns"]
+unique_name_in_owner = true
+layout_mode = 2
+split_offset = 500
+
+[node name="Center" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(230, 0)
+
+[node name="CenterSplit" type="VSplitContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 390
+
+[node name="GraphPane" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OverviewHeader" type="HBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane"]
+layout_mode = 2
+
+[node name="OverviewTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/OverviewHeader"]
+layout_mode = 2
+text = "SYSTEM OVERVIEW"
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
+
+[node name="SelectSystem" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/OverviewHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "System"
+
+[node name="AddEmitter" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/OverviewHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ Empty emitter"
+
+[node name="AddSpriteEmitter" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/OverviewHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ Sprite emitter"
+
+[node name="OverviewTools" type="HBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane"]
+layout_mode = 2
+
+[node name="OverviewZoom" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/OverviewTools"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100% · Middle drag to pan · Wheel to zoom"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.52, 0.58, 0.66, 1)
+
+[node name="FrameOverview" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/OverviewTools"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Frame all"
+
+[node name="StackSearch" type="LineEdit" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search modules in system overview…"
+
+[node name="Overview" type="Control" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+mouse_filter = 0
+script = ExtResource("3")
+
+[node name="Canvas" type="Control" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/Overview"]
+layout_mode = 0
+mouse_filter = 2
+
+[node name="EmitterCards" type="HBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane/Overview/Canvas"]
+unique_name_in_owner = true
+layout_mode = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="OverviewHint" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/GraphPane"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Create or open an effect to edit its emitters."
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.52, 0.58, 0.66, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Right" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+
+[node name="SelectionTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SELECTION"
+theme_override_colors/font_color = Color(0.83, 0.66, 0.35, 1)
+
+[node name="DetailsBox" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DetailsTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Right/DetailsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DETAILS"
+theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
+
+[node name="DetailsScroll" type="ScrollContainer" parent="Layout/MainSplit/Columns/WorkSplit/Right/DetailsBox"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 140)
+
+[node name="Details" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Right/DetailsBox/DetailsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Bottom" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 170)
+
+[node name="Transport" type="HFlowContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TimelineTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+layout_mode = 2
+text = "TIMELINE"
+
+[node name="Restart" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↺ Restart"
+
+[node name="PlayPause" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "▶ Play"
+
+[node name="Step" type="Button" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Step 1/60"
+
+[node name="Loop" type="CheckBox" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Loop"
+button_pressed = true
+
+[node name="TimeSlider" type="HSlider" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(160, 0)
+size_flags_horizontal = 3
+max_value = 5.0
+step = 0.0166667
+
+[node name="TimeLabel" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.000 s"
+custom_minimum_size = Vector2(75, 0)
+
+[node name="Duration" type="SpinBox" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/Transport"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(140, 0)
+min_value = 0.1
+max_value = 60.0
+step = 0.1
+value = 5.0
+prefix = "Range"
+suffix = "s"
+
+[node name="BottomSplit" type="TabContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Emitter Tracks" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit" instance=ExtResource("4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Niagara Log" type="VBoxContainer" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LogTitle" type="Label" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit/Niagara Log"]
+layout_mode = 2
+text = "Effect diagnostics"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.62, 0.67, 0.74, 1)
+
+[node name="Diagnostics" type="RichTextLabel" parent="Layout/MainSplit/Columns/WorkSplit/Center/CenterSplit/Bottom/BottomSplit/Niagara Log"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+selection_enabled = true
+text = ""
+
+[node name="Status" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ready"
+theme_override_colors/font_color = Color(0.58, 0.65, 0.73, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="OpenDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open effect resource"
+size = Vector2i(900, 600)
+file_mode = 0
+access = 0
+filters = PackedStringArray("*.tres ; Godot text resource")
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Save effect as text resource"
+size = Vector2i(900, 600)
+file_mode = 4
+access = 0
+filters = PackedStringArray("*.tres ; Godot text resource")
+
+[node name="DiscardDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "Unsaved effect"
+dialog_text = "The current effect has unsaved changes. Continue and replace it? A text recovery copy will be preserved."
+ok_button_text = "Continue"
+
+[node name="PlayerSceneDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Create a reusable particle scene"
+size = Vector2i(900, 600)
+file_mode = 4
+access = 0
+filters = PackedStringArray("*.tscn ; Godot text scene")
+
+[node name="ModuleDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "Add module"
+size = Vector2i(480, 420)
+
+[node name="Content" type="VBoxContainer" parent="ModuleDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 472.0
+offset_bottom = 372.0
+
+[node name="ModuleSearch" type="LineEdit" parent="ModuleDialog/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search compatible modules…"
+
+[node name="Coverage" type="Label" parent="ModuleDialog/Content"]
+layout_mode = 2
+text = "CPU prototype · GPU support and Unreal equivalence are unverified."
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 11
+
+[node name="Scroll" type="ScrollContainer" parent="ModuleDialog/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ModuleOptions" type="VBoxContainer" parent="ModuleDialog/Content/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MaterialDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Assign material resource"
+size = Vector2i(900, 600)
+file_mode = 0
+access = 0
+filters = PackedStringArray("*.tres ; Material text resource")
+
+[node name="MeshDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Assign mesh resource"
+size = Vector2i(900, 600)
+file_mode = 0
+access = 0
+filters = PackedStringArray("*.tres ; Mesh text resource")
+
+[node name="RenameEmitterDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "Rename emitter"
+size = Vector2i(420, 120)
+
+[node name="Name" type="LineEdit" parent="RenameEmitterDialog"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 410.0
+offset_bottom = 48.0
+
+[node name="RecoveryTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.8
+one_shot = true
+
+[node name="PickerTooltipTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2

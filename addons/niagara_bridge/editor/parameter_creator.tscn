@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[node name="ParameterCreator" type="VBoxContainer"]
+
+[node name="Name" type="LineEdit" parent="."]
+placeholder_text = "Parameter name"
+accessibility_name = "Parameter name"
+
+[node name="Actions" type="HBoxContainer" parent="."]
+
+[node name="Type" type="OptionButton" parent="Actions"]
+size_flags_horizontal = 3
+accessibility_name = "Parameter type"
+
+[node name="Add" type="Button" parent="Actions"]
+text = "Add parameter"
