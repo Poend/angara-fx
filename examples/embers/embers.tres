@@ -1,11 +1,11 @@
 [gd_resource type="Resource" format=3]
 
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_effect.gd" id="nb_effect"]
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_emitter.gd" id="nb_emitter"]
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_input.gd" id="nb_input"]
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_module.gd" id="nb_module"]
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_renderer.gd" id="nb_renderer"]
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_stage.gd" id="nb_stage"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_effect.gd" id="nb_effect"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_emitter.gd" id="nb_emitter"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_input.gd" id="nb_input"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_module.gd" id="nb_module"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_renderer.gd" id="nb_renderer"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_stage.gd" id="nb_stage"]
 
 [ext_resource type="ShaderMaterial" path="res://examples/embers/ember_material.tres" id="ember_material"]
 

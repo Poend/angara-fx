@@ -3,7 +3,7 @@ import argparse
 import math
 from pathlib import Path
 
-OUTPUT = Path(__file__).resolve().parents[1] / "addons/niagara_bridge/data/vector_fields"
+OUTPUT = Path(__file__).resolve().parents[1] / "addons/angara_fx/data/vector_fields"
 # Each amplitude is perpendicular to its wave vector, so every term is divergence-free.
 # Integer frequencies and phases close the field continuously at every tile boundary.
 MODES = (
@@ -21,7 +21,7 @@ WAVE = tuple(round(1024 * math.sin(math.tau * i / PERIOD)) for i in range(PERIOD
 def resource(size):
     header = f'''[gd_resource type="Resource" format=3]
 
-[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_vector_field.gd" id="field"]
+[ext_resource type="Script" path="res://addons/angara_fx/document/nb_vector_field.gd" id="field"]
 
 [resource]
 script = ExtResource("field")
