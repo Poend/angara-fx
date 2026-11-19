@@ -1,8 +1,8 @@
 extends SceneTree
 ## Run with the Forward+ renderer to exercise the GPU compute backend.
-const Player = preload("res://addons/niagara_bridge/runtime/effect_player.gd")
-const EffectInput = preload("res://addons/niagara_bridge/document/nb_input.gd")
-const Workspace = preload("res://addons/niagara_bridge/editor/workspace.tscn")
+const Player = preload("res://addons/angara_fx/runtime/effect_player.gd")
+const EffectInput = preload("res://addons/angara_fx/document/nb_input.gd")
+const Workspace = preload("res://addons/angara_fx/editor/workspace.tscn")
 const DEMO = "res://examples/embers/embers.tres"
 const EDITED = "user://angara-smoke/edited.tres"
 const STEP = 1.0 / 60.0

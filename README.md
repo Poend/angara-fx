@@ -20,6 +20,23 @@ Three five-second shots recorded in Godot 4.7.2. The camera orbits each effect w
 
 The third-party effects appear here as rendered footage. The source assets remain with their respective creators.
 
+## Install Angara FX
+
+For Godot 4.7 on Windows x86-64, extract the [Angara FX 0.2.0 ZIP](https://github.com/Poend/angara-fx/releases/download/v0.2.0/angara-fx-0.2.0-windows-x86_64.zip) beside `project.godot`. Enable **Angara FX** in **Project Settings → Plugins**. Add an `AngaraEffect3D` node and assign your effect in the Inspector. The compiled runtime lives in `addons/angara_fx/native/bin/angara_fx_native.dll`.
+
+### Upgrade a 0.1 project
+
+Close Godot and save a copy of the project. Move the old addon directories outside the project before extracting 0.2. Projects that import Niagara bundles also need the matching 0.2 importer. Install both packages before migrating references.
+
+Run the [migration tool](tools/migrate_0_1.py) from the source checkout with Python 3.9 or later. Pass the folder containing your project's `project.godot`. The first command lists affected files. The second updates their text references. Signed bundle plans retain their original bytes.
+
+```powershell
+python tools/migrate_0_1.py "C:/Projects/MyGame"
+python tools/migrate_0_1.py "C:/Projects/MyGame" --apply
+```
+
+Reopen Godot and verify your saved scenes. If your own addons reference the old runtime, update their paths and player type to the 0.2 names. The tool processes project scenes, resources and game scripts outside addon directories.
+
 ## Try Embers
 
 Tested with Godot 4.7.2 (standard single-precision build), Windows x86-64, Forward+ and Jolt Physics. The native extension manifest currently targets Windows x86-64. GPU simulation requires a compute-capable rendering device.
@@ -62,13 +79,15 @@ The next simulation step reads the new value and existing particles keep their a
 Install Git, Python 3, CMake 3.24 or later, and Visual Studio 2022 with the **Desktop development with C++** workload and a Windows SDK. Run these commands from the repository root in PowerShell.
 
 ```powershell
-cmake -S native/niagara_bridge -B build -G "Visual Studio 17 2022" -A x64
-cmake --build build --config Release --target niagara_bridge_native --parallel 6
+cmake -S native/angara_fx -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release --target angara_fx_native --parallel 6
 ```
 
-CMake fetches the pinned godot-cpp revision and writes `niagara_bridge_native.dll` to `addons/niagara_bridge/native/bin/`. For an existing local checkout of the pinned SDK, add `-DFETCHCONTENT_SOURCE_DIR_GODOT_CPP=<path>` to the first command. The revision is recorded in [CMakeLists.txt](native/niagara_bridge/CMakeLists.txt).
+CMake fetches the pinned godot-cpp revision and writes `angara_fx_native.dll` to `addons/angara_fx/native/bin/`. For an existing local checkout of the pinned SDK, add `-DFETCHCONTENT_SOURCE_DIR_GODOT_CPP=<path>` to the first command. The revision is recorded in [CMakeLists.txt](native/angara_fx/CMakeLists.txt).
 
-To use Angara FX in your own Godot 4.7 project, copy the built `addons/niagara_bridge` directory, including its DLL, to the same path under your project root. Enable **Angara FX** in **Project Settings → Plugins**. Keep the directory name because saved effects reference resources inside it.
+To use Angara FX in your own Godot 4.7 project, copy the built `addons/angara_fx` directory, including its DLL, to the same path under your project root. Enable **Angara FX** in **Project Settings → Plugins**. Keep the directory name because saved effects reference resources inside it.
+
+To create the installable ZIP and its SHA-256 sidecar, run `cmake --build build --config Release --target PACKAGE`.
 
 ## Verify the build
 
@@ -84,4 +103,4 @@ The [smoke test](tests/core_smoke.gd) edits, saves, and reopens an effect, compa
 
 ## License
 
-Angara FX is released under the [MIT License](LICENSE). The extension links godot-cpp, whose license is included in the [third-party notices](addons/niagara_bridge/native/THIRD_PARTY_NOTICES.txt).
+Angara FX is released under the [MIT License](LICENSE). The extension links godot-cpp, whose license is included in the [third-party notices](addons/angara_fx/native/THIRD_PARTY_NOTICES.txt).

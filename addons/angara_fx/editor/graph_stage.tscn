@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/angara_fx/editor/stage_header.tscn" id="1"]
+
+[node name="GraphStage" type="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Header" parent="." instance=ExtResource("1")]
+layout_mode = 2
+
+[node name="Modules" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 1

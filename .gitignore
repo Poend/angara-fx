@@ -1,5 +1,5 @@
 .godot/
 build/
-addons/niagara_bridge/native/bin/
+addons/angara_fx/native/bin/
 __pycache__/
 *.pyc

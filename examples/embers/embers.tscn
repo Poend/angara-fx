@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://addons/niagara_bridge/runtime/effect_player.gd" id="player"]
+[ext_resource type="Script" path="res://addons/angara_fx/runtime/effect_player.gd" id="player"]
 [ext_resource type="Resource" path="res://examples/embers/embers.tres" id="embers"]
 
 [sub_resource type="Environment" id="night"]

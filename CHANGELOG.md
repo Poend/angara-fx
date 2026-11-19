@@ -2,7 +2,13 @@
 
 This file records user-visible changes to the Angara FX core. Planned work lives in the [roadmap](ROADMAP.md).
 
-## Unreleased
+## 0.2.0
+
+November 19, 2026 · Standalone Angara FX package.
+
+- The addon now installs under `addons/angara_fx/`. The extension, DLL, build target and runtime metadata use the Angara FX name. Game scripts use `AngaraEffect3D`.
+- Published a Windows x86-64 ZIP with the native runtime. The packaged DLL omits local checkout paths.
+- Use the [0.1 upgrade instructions](README.md#upgrade-a-01-project) to update existing scenes, scripts and project settings. Script UIDs and the effect schema are preserved.
 
 - The native build reads the version from the Godot plugin manifest. Maintainers can check a proposed release tag and the changelog before publishing. [Release guide](RELEASING.md)
 

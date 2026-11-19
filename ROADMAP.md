@@ -1,6 +1,6 @@
 # Angara FX roadmap
 
-Angara FX is a standalone particle system for Godot. The next milestone is **0.2.0**, focused on the workflow from a blank effect to a reusable scene. Later milestones are ordered by dependency. Their scope can change as we test more effects.
+Angara FX is a standalone particle system for Godot. Version 0.2.0 ships the independently named Godot addon. The next authoring milestone focuses on the workflow from a blank effect to a reusable scene. Later milestones are ordered by dependency. Their scope can change as we test more effects.
 
 ## 0.1.0 · Baseline
 
@@ -8,7 +8,7 @@ The Godot editor can create emitters, bind module inputs to user parameters, pre
 
 The tested configuration is Godot 4.7.2 on Windows x86-64, with Forward+ and Jolt. Embers is the reproducible example. The smoke test saves and reopens an edited effect, compares CPU and GPU positions across three curl fields, and checks the rendered image. [Release history](CHANGELOG.md) · [Smoke test](tests/core_smoke.gd)
 
-## 0.2.0 · Build effects in Godot
+## Next authoring milestone · Build effects in Godot
 
 - Publish a module reference showing the stage, supported inputs, and CPU/GPU coverage for each authorable module. Surface unsupported combinations in the editor with the emitter, module, and input that need attention.
 - Build a one-shot burst and a continuous multi-emitter effect in Godot using the existing spawn, force, curve, and parameter modules. Fill gaps in shared modules so both examples use the same editor and runtime paths.
