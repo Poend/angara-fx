@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://addons/niagara_bridge/runtime/effect_player.gd" id="player"]
+[ext_resource type="Resource" path="res://examples/embers/embers.tres" id="embers"]
+
+[sub_resource type="Environment" id="night"]
+background_mode = 1
+background_color = Color(0.016, 0.022, 0.038, 1)
+
+[node name="Embers" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("night")
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(0, 1.17, 3.5)
+projection = 1
+size = 3.0
+current = true
+
+[node name="Effect" type="Node3D" parent="."]
+script = ExtResource("player")
+effect = ExtResource("embers")

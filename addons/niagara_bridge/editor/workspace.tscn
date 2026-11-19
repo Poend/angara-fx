@@ -487,7 +487,7 @@ placeholder_text = "Search compatible modules…"
 
 [node name="Coverage" type="Label" parent="ModuleDialog/Content"]
 layout_mode = 2
-text = "CPU prototype · GPU support and Unreal equivalence are unverified."
+text = "Select a module to add it to the current stage."
 autowrap_mode = 3
 theme_override_font_sizes/font_size = 11
 

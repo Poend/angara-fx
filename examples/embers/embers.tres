@@ -1,0 +1,228 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_effect.gd" id="nb_effect"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_emitter.gd" id="nb_emitter"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_input.gd" id="nb_input"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_module.gd" id="nb_module"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_renderer.gd" id="nb_renderer"]
+[ext_resource type="Script" path="res://addons/niagara_bridge/document/nb_stage.gd" id="nb_stage"]
+
+[ext_resource type="ShaderMaterial" path="res://examples/embers/ember_material.tres" id="ember_material"]
+
+[sub_resource type="Resource" id="nb_cee8871878d61b7099010a92"]
+script = ExtResource("nb_renderer")
+stable_id = "17e45197bf2d601b077f"
+material = ExtResource("ember_material")
+
+[sub_resource type="Resource" id="nb_5e361401177cb0b12fe7b476"]
+script = ExtResource("nb_input")
+input_name = "LocalSpace"
+value = false
+provenance = "authored"
+
+[sub_resource type="Resource" id="nb_308fe86a2008585db3676cf9"]
+script = ExtResource("nb_stage")
+stable_id = "503963673ba5a976418a"
+stage_name = "EmitterSpawn"
+
+[sub_resource type="Resource" id="nb_49be04b843abad6d9ea5f418"]
+script = ExtResource("nb_input")
+input_name = "LoopBehavior"
+value = "Infinite"
+
+[sub_resource type="Resource" id="nb_1e3469be95a369dc4225b430"]
+script = ExtResource("nb_input")
+input_name = "LoopDuration"
+value = 1.0
+
+[sub_resource type="Resource" id="nb_648d3ef06e781cea8147c2ae"]
+script = ExtResource("nb_input")
+input_name = "UseLoopDelay"
+value = false
+
+[sub_resource type="Resource" id="nb_6fdbf0388c1c9b4857116d2a"]
+script = ExtResource("nb_module")
+stable_id = "31a1701eeb04e1e26c63"
+module_name = "EmitterState"
+inputs = Array[Resource]([SubResource("nb_49be04b843abad6d9ea5f418"), SubResource("nb_1e3469be95a369dc4225b430"), SubResource("nb_648d3ef06e781cea8147c2ae")])
+
+[sub_resource type="Resource" id="nb_1503762458772e6145c9f1aa"]
+script = ExtResource("nb_input")
+input_name = "SpawnRate"
+value = {"kind":"reference", "name":"User.EmissionRate", "local_value":110.0}
+
+[sub_resource type="Resource" id="nb_62ae31a6c1c258731a48a96d"]
+script = ExtResource("nb_input")
+input_name = "UseSpawnProbability"
+value = false
+
+[sub_resource type="Resource" id="nb_e86fdf21d7ce6af5a2bf734a"]
+script = ExtResource("nb_module")
+stable_id = "8bffcfe436c3f09f305a"
+module_name = "SpawnRate"
+inputs = Array[Resource]([SubResource("nb_1503762458772e6145c9f1aa"), SubResource("nb_62ae31a6c1c258731a48a96d")])
+
+[sub_resource type="Resource" id="nb_379f97dbf3c42d34e0f0926c"]
+script = ExtResource("nb_stage")
+stable_id = "4a1e0474a920fa203282"
+stage_name = "EmitterUpdate"
+operations = Array[Resource]([SubResource("nb_6fdbf0388c1c9b4857116d2a"), SubResource("nb_e86fdf21d7ce6af5a2bf734a")])
+
+[sub_resource type="Resource" id="nb_8ecc2aa04ab8d9a0ee2fc666"]
+script = ExtResource("nb_input")
+input_name = "SpriteSizeMode"
+value = "RandomNonUniform"
+
+[sub_resource type="Resource" id="nb_a6c56ba004850b03d3470cb3"]
+script = ExtResource("nb_input")
+input_name = "ColorMode"
+value = "DirectSet"
+
+[sub_resource type="Resource" id="nb_42052ba536d4bc26c22ea16f"]
+script = ExtResource("nb_input")
+input_name = "PositionMode"
+value = "SimulationPosition"
+
+[sub_resource type="Resource" id="nb_83b6d7f8c12456602d16a417"]
+script = ExtResource("nb_input")
+input_name = "LifetimeMode"
+value = "Random"
+
+[sub_resource type="Resource" id="nb_90704a02e4b0aa42267f6042"]
+script = ExtResource("nb_input")
+input_name = "LifetimeMin"
+value = 0.6
+
+[sub_resource type="Resource" id="nb_ae78f533137666c09d1b6ecd"]
+script = ExtResource("nb_input")
+input_name = "LifetimeMax"
+value = 1.45
+
+[sub_resource type="Resource" id="nb_cc0f8ba3bb4dedaf445f24eb"]
+script = ExtResource("nb_input")
+input_name = "Color"
+value = [1.0, 1.0, 1.0, 1.0]
+
+[sub_resource type="Resource" id="nb_3c86c14cc2e4c3aa7107459f"]
+script = ExtResource("nb_input")
+input_name = "SpriteSizeMin"
+value = [2.1, 3.0]
+
+[sub_resource type="Resource" id="nb_35525b84526324dcd3bdb8b2"]
+script = ExtResource("nb_input")
+input_name = "SpriteSizeMax"
+value = [5.3, 7.0]
+
+[sub_resource type="Resource" id="nb_b73fe5f1f0109bfced6c24a1"]
+script = ExtResource("nb_module")
+stable_id = "1e16018060f48686efca"
+module_name = "V2/InitializeParticle"
+inputs = Array[Resource]([SubResource("nb_8ecc2aa04ab8d9a0ee2fc666"), SubResource("nb_a6c56ba004850b03d3470cb3"), SubResource("nb_42052ba536d4bc26c22ea16f"), SubResource("nb_83b6d7f8c12456602d16a417"), SubResource("nb_90704a02e4b0aa42267f6042"), SubResource("nb_ae78f533137666c09d1b6ecd"), SubResource("nb_cc0f8ba3bb4dedaf445f24eb"), SubResource("nb_3c86c14cc2e4c3aa7107459f"), SubResource("nb_35525b84526324dcd3bdb8b2")])
+
+[sub_resource type="Resource" id="nb_1da1989fb8b2809ede2e2c93"]
+script = ExtResource("nb_input")
+input_name = "VelocityMode"
+value = "Linear"
+
+[sub_resource type="Resource" id="nb_50106ce3d5ff7ba5e2f8226c"]
+script = ExtResource("nb_input")
+input_name = "Velocity"
+value = {"kind":"call","name":"RandomRangeVector","arguments":[{"name":"Minimum","value":[-33.0,-42.0,110.0]},{"name":"Maximum","value":[33.0,42.0,195.0]}]}
+
+[sub_resource type="Resource" id="nb_aeac8e13490ce7c779a29d31"]
+script = ExtResource("nb_input")
+input_name = "VelocitySpeedScale"
+value = 1.0
+
+[sub_resource type="Resource" id="nb_ba3381d6cbcc31286285b1bc"]
+script = ExtResource("nb_module")
+stable_id = "97c9a3b8a0e663dcc169"
+module_name = "AddVelocity"
+inputs = Array[Resource]([SubResource("nb_1da1989fb8b2809ede2e2c93"), SubResource("nb_50106ce3d5ff7ba5e2f8226c"), SubResource("nb_aeac8e13490ce7c779a29d31")])
+
+[sub_resource type="Resource" id="nb_532c4e2a48f13386b87a7776"]
+script = ExtResource("nb_stage")
+stable_id = "8f6c4698c767e128446c"
+stage_name = "ParticleSpawn"
+operations = Array[Resource]([SubResource("nb_b73fe5f1f0109bfced6c24a1"), SubResource("nb_ba3381d6cbcc31286285b1bc")])
+
+[sub_resource type="Resource" id="nb_73d3bc103e64d1f81d88da54"]
+script = ExtResource("nb_input")
+input_name = "KillParticlesWhenLifetimeHasElapsed"
+value = true
+
+[sub_resource type="Resource" id="nb_68aad0567a29909322d34450"]
+script = ExtResource("nb_module")
+stable_id = "fd89c0c93bbf5e06fc0f"
+module_name = "ParticleState@1.1"
+inputs = Array[Resource]([SubResource("nb_73d3bc103e64d1f81d88da54")])
+
+[sub_resource type="Resource" id="nb_5a0e530b4a4bc512a1408dc9"]
+script = ExtResource("nb_input")
+input_name = "ClampVelocity"
+value = false
+
+[sub_resource type="Resource" id="nb_5218530a5c56768b152617f2"]
+script = ExtResource("nb_input")
+input_name = "LimitAcceleration"
+value = false
+
+[sub_resource type="Resource" id="nb_e756a9cc1f5b3fe7eeac54d2"]
+script = ExtResource("nb_module")
+stable_id = "bbb4923288f3fdfef211"
+module_name = "SolveForcesAndVelocity"
+inputs = Array[Resource]([SubResource("nb_5a0e530b4a4bc512a1408dc9"), SubResource("nb_5218530a5c56768b152617f2")])
+
+[sub_resource type="Resource" id="curl_strength"]
+script = ExtResource("nb_input")
+input_name = "NoiseStrength"
+value = 180.0
+
+[sub_resource type="Resource" id="curl_frequency"]
+script = ExtResource("nb_input")
+input_name = "NoiseFrequency"
+value = 30.0
+
+[sub_resource type="Resource" id="curl_force"]
+script = ExtResource("nb_module")
+stable_id = "37e9ec2b278d270af205"
+module_name = "V2/CurlNoiseForce@1.2"
+inputs = Array[Resource]([SubResource("curl_strength"), SubResource("curl_frequency")])
+
+[sub_resource type="Resource" id="nb_5dc2c2eb0eb6a74403d0c276"]
+script = ExtResource("nb_stage")
+stable_id = "ddb2564ddc275967fb27"
+stage_name = "ParticleUpdate"
+operations = Array[Resource]([SubResource("nb_68aad0567a29909322d34450"), SubResource("curl_force"), SubResource("nb_e756a9cc1f5b3fe7eeac54d2")])
+
+[sub_resource type="Resource" id="nb_c9bc24381bb005c84545dd18"]
+script = ExtResource("nb_emitter")
+stable_id = "9d46b4b02533acb1a833"
+display_name = "Rising embers"
+settings = Array[Resource]([SubResource("nb_5e361401177cb0b12fe7b476")])
+stages = Array[Resource]([SubResource("nb_308fe86a2008585db3676cf9"), SubResource("nb_379f97dbf3c42d34e0f0926c"), SubResource("nb_532c4e2a48f13386b87a7776"), SubResource("nb_5dc2c2eb0eb6a74403d0c276")])
+renderers = Array[Resource]([SubResource("nb_cee8871878d61b7099010a92")])
+
+[sub_resource type="Resource" id="nb_13d18c51f1b121c988d1c8f8"]
+script = ExtResource("nb_stage")
+stable_id = "7deda229af4253f698ce"
+stage_name = "SystemSpawn"
+
+[sub_resource type="Resource" id="nb_cb1be7fb20b257769066b76e"]
+script = ExtResource("nb_stage")
+stable_id = "1d2d9d8b7d6ff2e0b9e5"
+stage_name = "SystemUpdate"
+
+[sub_resource type="Resource" id="emission_rate"]
+script = ExtResource("nb_input")
+input_name = "User.EmissionRate"
+target_type = "float"
+value = 110.0
+
+[resource]
+script = ExtResource("nb_effect")
+stable_id = "6d98c445db483dce0046"
+display_name = "Embers"
+user_parameters = Array[Resource]([SubResource("emission_rate")])
+stages = Array[Resource]([SubResource("nb_13d18c51f1b121c988d1c8f8"), SubResource("nb_cb1be7fb20b257769066b76e")])
+emitters = Array[Resource]([SubResource("nb_c9bc24381bb005c84545dd18")])

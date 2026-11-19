@@ -1,7 +1,7 @@
 @tool
 extends NBNativeCurlNoise
-## V2 CurlNoiseForce 1.0/1.1/1.2 baked-field branches, from native graphs and DI source.
-## Source1 changes only Ultra procedural scale; the baked fields match Source0.
+## Three resolutions of the original Angara FX periodic flow field.
+## Keep the resource paths stable for authored effects.
 const Values = preload("res://addons/niagara_bridge/runtime/value_evaluator.gd")
 const RNG = preload("res://addons/niagara_bridge/runtime/source_rng.gd")
 const FIELDS: Array = [
